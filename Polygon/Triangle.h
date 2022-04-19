@@ -24,8 +24,6 @@ class Triangle : public Polygon
 
     virtual Area area() const override;
     virtual type getType() const override;
-    virtual float getParam() const override;
-    virtual Polygon * deSerialize( std::string & serialized ) override;
     virtual Point getCoordinate( nodeNum ) const override;
 
   private:
@@ -43,11 +41,6 @@ type Triangle ::getType() const
     return Polygon::Triangle;
 }
 
-float Triangle ::getParam() const
-{
-    return m_s;
-}
-
 Polygon::Point Triangle ::getCoordinate( nodeNum nodeNum ) const
 {
     int cnt = 0;
@@ -55,11 +48,5 @@ Polygon::Point Triangle ::getCoordinate( nodeNum nodeNum ) const
         if ( cnt++ == nodeNum ) return l->begin;
 }
 
-Polygon * Triangle ::deSerialize( std::string & serialized )
-{
-    size_t digits1 = serialized.find_last_of( "1234567890+-" );
-    m_s = digits1;
-    return this;
-}
 
 #endif // TRIANGLE_H

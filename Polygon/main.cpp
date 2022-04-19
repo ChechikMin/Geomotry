@@ -1,31 +1,31 @@
-#include "Circle.h"
-#include "Rectangle.h"
-#include "Triangle.h"
-#include <iostream>
+#include "Utils.h"
+
 
 class Work
 {
-  public:
-    void action( Polygon * polygon ) const;
+public:
+    void action(Polygon* polygon) const;
 
-  private:
+private:
 };
 
-void Work::action( Polygon * polygon ) const
+void Work::action(Polygon* polygon) const
 {
-    std::string str = Polygon::serialize( polygon );
+    std::string str = Utils::serializeToString(polygon);
     std::cout << str;
     std::cout << "Area:" << polygon->area() << "\n";
 
-    Polygon * dePoly = polygon->deSerialize( str );
+    Polygon* dePoly = Utils::deSerializeFromString(str);
 
-    std::cout << "Param:" << dePoly->area() << "\n";
+    std::cout << "Area deSerialized:" << dePoly->area() << "\n";
     std::cout << "|||||||||||||||||||||||||||||||\n";
+    delete dePoly;
 }
 
 int main( int argc, char * argv[] )
 {
     Polygon::Point p{ 1, 1 };
+    Polygon::Line r{p, {2,2}};
 
     Polygon::Point p1{ 1, 1 };
     Polygon::Point p2{ 1, 2 };
@@ -71,7 +71,7 @@ int main( int argc, char * argv[] )
 
         std::unique_ptr<Polygon*> poly2 = std::make_unique<Polygon*>(new Triangle( points ));
         std::unique_ptr<Polygon*> poly3 = std::make_unique<Polygon*>(new Rectangle( points1 ));
-        std::unique_ptr<Polygon*> poly1 = std::make_unique<Polygon*>(new Circle( p, 5 ));
+        std::unique_ptr<Polygon*> poly1 = std::make_unique<Polygon*>(new Circle( p, r ));
 
         Work * work = new Work;
 
