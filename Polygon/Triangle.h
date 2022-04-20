@@ -31,17 +31,17 @@ class Triangle : public Polygon
     mutable Area m_s = 1;
 };
 
-Area Triangle ::area() const
+Area Triangle ::area() const noexcept
 {
     return m_s;
 }
 
-type Triangle ::getType() const
+type Triangle ::getType() const noexcept
 {
     return Polygon::Triangle;
 }
 
-Polygon::Point Triangle ::getCoordinate( nodeNum nodeNum ) const
+Polygon::Point Triangle ::getCoordinate( nodeNum nodeNum ) const noexcept
 {
     int cnt = 0;
     for ( std::shared_ptr<Line> l : m_lines )

@@ -13,9 +13,9 @@ class Circle : public Polygon
         if (m_s < 0) throw std::logic_error("wrong input");
     };
 
-    virtual Area area() const override;
-    virtual type getType() const override;
-    virtual Point getCoordinate( nodeNum ) const override;
+    virtual Area area() const noexcept override;
+    virtual type getType() const noexcept override;
+    virtual Point getCoordinate( nodeNum ) const noexcept override;
 
   private:
     mutable Line m_radius;
@@ -28,12 +28,12 @@ Area Circle ::area() const noexcept
     return m_s;
 };
 
-type Circle ::getType() const
+type Circle ::getType() const noexcept
 {
     return Polygon::Circle;
 }
 
-Polygon::Point Circle ::getCoordinate( nodeNum nodeNum ) const
+Polygon::Point Circle ::getCoordinate( nodeNum nodeNum ) const noexcept
 {
     return nodeNum ? Point{ m_radius.getLineLen(),} : Point{ m_centr->x, m_centr->y };
 }

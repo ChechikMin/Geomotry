@@ -13,25 +13,25 @@ public:
         if (m_s < 0) throw std::logic_error("wrong input");
     }
 
-    virtual float area() const override;
-    virtual type getType() const override;
-    virtual Point getCoordinate(nodeNum) const override;
+    virtual float area() const noexcept override;
+    virtual type getType() const noexcept override;
+    virtual Point getCoordinate(nodeNum) const noexcept override;
 
 private:
     std::list<std::shared_ptr<Line>> m_lines{ 3 };
     mutable Area m_s = 0;
 };
 
-float Rectangle::area() const
+float Rectangle::area() const noexcept
 {
     return m_s;
 }
 
-type Rectangle::getType() const
+type Rectangle::getType() const noexcept
 {
     return Polygon::Rectangle;
 }
-Polygon::Point Rectangle::getCoordinate(nodeNum nodeNum) const
+Polygon::Point Rectangle::getCoordinate(nodeNum nodeNum) const noexcept
 {
     int cnt = 0;
     for (std::shared_ptr<Line> p : m_lines)

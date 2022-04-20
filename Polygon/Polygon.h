@@ -34,7 +34,7 @@ class Polygon
         Point begin;
         Point end;
 
-        float getLineLen() const
+        float getLineLen() const 
         {
             return std::sqrt( std::pow( begin.x - end.x, 2 ) + std::pow( begin.y - end.y, 2 ) );
             ;
@@ -43,9 +43,9 @@ class Polygon
 
   public:
 
-    virtual Area area() const = 0;
-    virtual Point getCoordinate( nodeNum ) const = 0;
-    virtual type getType() const = 0;
+    virtual Area area() const noexcept = 0;
+    virtual Point getCoordinate( nodeNum ) const noexcept = 0;
+    virtual type getType() const noexcept = 0;
 
 
     virtual ~Polygon() = default;
