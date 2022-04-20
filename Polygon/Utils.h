@@ -43,26 +43,29 @@ namespace Utils {
         int j = 0;
         float radius = 0.f;
 
+
+        std::vector<float> data;
+
+        for (std::sregex_iterator i = std::sregex_iterator(serialized.begin(), serialized.end(), r);
+            i != std::sregex_iterator();
+            ++i)
+        {
+            std::smatch m = *i;
+            data.push_back(std::stof(m.str()));
+        }
+
         if (tmp == "Circle")
         {
-            std::vector<float> data;
-
-            for (std::sregex_iterator i = std::sregex_iterator(serialized.begin(), serialized.end(), r);
-                i != std::sregex_iterator();
-                ++i)
-            {
-                std::smatch m = *i;
-                data.push_back(std::stof(m.str()));
-            }
+           
             return new Circle({ data[3], data[4] }, { { data[3], data[4] }, { data[3] + data[0], data[4] + data[0]}});
         }
         else if (tmp == "Rectangle") 
         {
 
-            Polygon::Point p4{ 1, 1 };
-            Polygon::Point p5{ 1, 2 };
-            Polygon::Point p6{ 2, 2 };
-            Polygon::Point p7{ 2, 1 };
+            Polygon::Point p4{ data[3], data[4] };
+            Polygon::Point p5{ data[6], data[7] };
+            Polygon::Point p6{ data[9], data[10] };
+            Polygon::Point p7{ data[12], data[13] };
 
             std::shared_ptr<Polygon::Line> r1 = std::make_shared<Polygon::Line>();
             ;
@@ -85,20 +88,20 @@ namespace Utils {
         }
 
 
-        Polygon::Point p1{ 1, 1 };
-        Polygon::Point p2{ 1, 2 };
-        Polygon::Point p3{ 2, 2 };
+        Polygon::Point p4{ data[3], data[4] };
+        Polygon::Point p5{ data[6], data[7] };
+        Polygon::Point p6{ data[9], data[10] };
         std::shared_ptr<Polygon::Line> l1 = std::make_shared<Polygon::Line>();
-        l1->begin = p1;
-        l1->end = p2;
+        l1->begin = p4;
+        l1->end = p5;
         std::shared_ptr<Polygon::Line> l2 = std::make_shared<Polygon::Line>();
         ;
-        l2->begin = p2;
-        l2->end = p3;
+        l2->begin = p5;
+        l2->end = p6;
         std::shared_ptr<Polygon::Line> l3 = std::make_shared<Polygon::Line>();
         ;
-        l3->begin = p3;
-        l3->end = p1;
+        l3->begin = p6;
+        l3->end = p4;
 
         std::list<std::shared_ptr<Polygon::Line>> points = { l1, l2, l3 };
 
