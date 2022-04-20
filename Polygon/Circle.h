@@ -38,4 +38,5 @@ Polygon::Point Circle ::getCoordinate( nodeNum nodeNum ) const
 }
 
 
+
 #endif // CIRCLE_H

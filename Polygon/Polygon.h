@@ -47,6 +47,7 @@ class Polygon
     virtual Point getCoordinate( nodeNum ) const = 0;
     virtual type getType() const = 0;
 
+
     virtual ~Polygon() = default;
 };
 
