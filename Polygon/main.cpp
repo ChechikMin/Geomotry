@@ -24,6 +24,18 @@ void Work::process(Polygon* polygon) const
 
 int main( int argc, char * argv[] )
 {
+    ///Number of Nodes for input like
+    //
+    // 2 -- 3
+    // |    |
+    // |    |
+    // 1    4
+    // 
+    // for Circle
+    // 
+    // one point is center, second point lay on circle
+    // 
+    // 
     //////////////////////////
     Polygon::Point p{ 1, 1 };
     Polygon::Line r{p, {2,2}};
