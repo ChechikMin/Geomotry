@@ -8,7 +8,19 @@ public:
     explicit Square(const std::list<std::shared_ptr<Line>>& lines)
         : m_lines(lines)
     {
+        for (std::shared_ptr<Line> p : m_lines) {
+            int cnt = std::count_if(m_lines.begin(), m_lines.end(), [&](std::shared_ptr<Line>& line) 
+                { return p->begin.x == line.get()->begin.x && line.get()->begin.y == p->begin.y; });
 
+            int cnt1 = std::count_if(m_lines.begin(), m_lines.end(), [&](std::shared_ptr<Line>& line)
+                { return p->begin.x == line.get()->begin.x || line.get()->begin.y == p->begin.y; });
+
+            if (cnt > 1 || cnt1 > 3) // 3 - if point lay on 1 line. 1 - if equal points
+               throw std::logic_error("wrong input point Square");
+
+        }
+
+        
         m_s = m_lines.front()->getLineLen() * m_lines.front()->getLineLen();
         if (m_s < 0) throw std::logic_error("wrong input");
     }

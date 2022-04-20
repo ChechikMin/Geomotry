@@ -40,9 +40,9 @@ int main( int argc, char * argv[] )
     Polygon::Point p{ 0, 0 };
     Polygon::Line r{p, {0,0}};
     //////////////////////////Circle
-    Polygon::Point p1{ -0, -0 };
-    Polygon::Point p2{ 0, 0 };
-    Polygon::Point p3{ -0, -0 };
+    Polygon::Point p1{ 1, -0 };
+    Polygon::Point p2{ 1, 2 };
+    Polygon::Point p3{ 5, 3 };
     std::shared_ptr<Polygon::Line> l1 = std::make_shared<Polygon::Line>();
     l1->begin = p1;
     l1->end = p2;
@@ -59,9 +59,9 @@ int main( int argc, char * argv[] )
     ///////////////////////Triangle
 
     Polygon::Point p4{ 1, 1 };
-    Polygon::Point p5{ 1, 5.5};
-    Polygon::Point p6{ 8.02, 5.5 };
-    Polygon::Point p7{ 8.02, 1 };
+    Polygon::Point p5{ 1, 8.02};
+    Polygon::Point p6{ 3, 8.02 };
+    Polygon::Point p7{ 3, 1 };
 
     std::shared_ptr<Polygon::Line> r1 = std::make_shared<Polygon::Line>();
     ;

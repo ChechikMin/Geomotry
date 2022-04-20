@@ -5,6 +5,7 @@
 #include <cmath>
 #include <memory>
 #include <regex>
+#include <algorithm>
 #include <string>
 
 using Area = float;

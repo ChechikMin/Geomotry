@@ -10,6 +10,19 @@ class Triangle : public Polygon
       : m_lines( lines )
     {
         float p = 0;
+
+        for (std::shared_ptr<Line> p : m_lines) {
+            int cnt = std::count_if(m_lines.begin(), m_lines.end(), [&](std::shared_ptr<Line>& line)
+                { return p->begin.x == line.get()->begin.x && line.get()->begin.y == p->begin.y; });
+
+            int cnt1 = std::count_if(m_lines.begin(), m_lines.end(), [&](std::shared_ptr<Line>& line)
+                { return p->begin.x == line.get()->begin.x || line.get()->begin.y == p->begin.y; });
+
+            if (cnt > 1 || cnt1 > 2) // 3 - if point lay on 1 line. 1 - if equal points
+                throw std::logic_error("wrong input point Triangle");
+
+        }
+
         for ( std::shared_ptr<Line> l : m_lines )
             p += l->getLineLen() / 2;
 
