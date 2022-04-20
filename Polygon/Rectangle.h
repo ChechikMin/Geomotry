@@ -10,6 +10,7 @@ public:
     {
 
         m_s = m_lines.front()->getLineLen() * m_lines.front()->getLineLen();
+        if (m_s < 0) throw std::logic_error("wrong input");
     }
 
     virtual float area() const override;

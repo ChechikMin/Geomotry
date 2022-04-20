@@ -10,6 +10,7 @@ class Circle : public Polygon
       , m_radius( radius )
     {
         m_s = M_PI * m_radius.getLineLen() * m_radius.getLineLen();
+        if (m_s < 0) throw std::logic_error("wrong input");
     };
 
     virtual Area area() const override;
@@ -22,7 +23,7 @@ class Circle : public Polygon
     mutable Area m_s = 0;
 };
 
-Area Circle ::area() const
+Area Circle ::area() const noexcept
 {
     return m_s;
 };

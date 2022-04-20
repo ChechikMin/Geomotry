@@ -19,12 +19,12 @@ class Triangle : public Polygon
         m_s *= p;
 
         m_s = std::sqrt( m_s );
-        if ( m_s < 0 ) throw std::logic_error( "infinity area" );
+        if ( m_s < 0 ) throw std::logic_error( "wrong input" );
     };
 
-    virtual Area area() const override;
-    virtual type getType() const override;
-    virtual Point getCoordinate( nodeNum ) const override;
+    virtual Area area() const noexcept override;
+    virtual type getType() const noexcept override;
+    virtual Point getCoordinate( nodeNum ) const noexcept override;
 
   private:
     std ::list<std::shared_ptr<Line>> m_lines{ 4 };

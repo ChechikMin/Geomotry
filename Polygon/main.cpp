@@ -4,12 +4,12 @@
 class Work
 {
 public:
-    void action(Polygon* polygon) const;
+    void process(Polygon* polygon) const;
 
 private:
 };
 
-void Work::action(Polygon* polygon) const
+void Work::process(Polygon* polygon) const
 {
     std::string str = Utils::serializeToString(polygon);
     std::cout << str;
@@ -24,9 +24,10 @@ void Work::action(Polygon* polygon) const
 
 int main( int argc, char * argv[] )
 {
+    //////////////////////////
     Polygon::Point p{ 1, 1 };
     Polygon::Line r{p, {2,2}};
-
+    //////////////////////////Circle
     Polygon::Point p1{ 1, 1 };
     Polygon::Point p2{ 1, 2 };
     Polygon::Point p3{ 2, 2 };
@@ -43,6 +44,7 @@ int main( int argc, char * argv[] )
     l3->end = p1;
 
     std::list<std::shared_ptr<Polygon::Line>> points = { l1, l2, l3 };
+    ///////////////////////Triangle
 
     Polygon::Point p4{ 1, 1 };
     Polygon::Point p5{ 1, 2 };
@@ -66,6 +68,7 @@ int main( int argc, char * argv[] )
     r4->end = p1;
 
     std::list<std::shared_ptr<Polygon::Line>> points1 = { r1, r2, r3, r4 };
+    //////////////////////////////Rectangle
 
     try {
 
@@ -75,9 +78,9 @@ int main( int argc, char * argv[] )
 
         Work * work = new Work;
 
-        work->action( *poly1 );
-        work->action( *poly2 );
-        work->action( *poly3 );
+        work->process( *poly1 );
+        work->process( *poly2 );
+        work->process( *poly3 );
         
 
         delete work;
@@ -85,6 +88,7 @@ int main( int argc, char * argv[] )
     } catch ( std::exception & ex ) {
         std::cerr << ex.what() << "\n";
     }
+    ////////////////////////Process
 
     //    delete poly1;
 
