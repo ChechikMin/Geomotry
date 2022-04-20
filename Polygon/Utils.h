@@ -1,6 +1,6 @@
 #pragma once
 #include "Circle.h"
-#include "Rectangle.h"
+#include "Square.h"
 #include "Triangle.h"
 #include <iostream>
 #include <vector>
@@ -17,7 +17,7 @@ namespace Utils {
             serialized += "Triangle\n";
             msgSize = 3;
             break;
-        case Polygon::Rectangle:
+        case Polygon::Square:
             serialized += "Rectangle\n";
             msgSize = 4;
             break;
@@ -87,7 +87,7 @@ namespace Utils {
             l4->end = p1;
 
             std::list<std::shared_ptr<Polygon::Line>> points1 = { l1, l2, l3, l4 };
-            return new Rectangle(points1);
+            return new Square(points1);
         }
         
         l3->begin = p3;

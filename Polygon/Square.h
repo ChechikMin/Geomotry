@@ -1,11 +1,11 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef Square_H
+#define Square_H
 #include "Polygon.h"
 
-class Rectangle : public Polygon
+class Square : public Polygon
 {
 public:
-    explicit Rectangle(const std::list<std::shared_ptr<Line>>& lines)
+    explicit Square(const std::list<std::shared_ptr<Line>>& lines)
         : m_lines(lines)
     {
 
@@ -22,20 +22,20 @@ private:
     mutable Area m_s = 0;
 };
 
-float Rectangle::area() const noexcept
+float Square::area() const noexcept
 {
     return m_s;
 }
 
-type Rectangle::getType() const noexcept
+type Square::getType() const noexcept
 {
-    return Polygon::Rectangle;
+    return Polygon::Square;
 }
-Polygon::Point Rectangle::getCoordinate(nodeNum nodeNum) const noexcept
+Polygon::Point Square::getCoordinate(nodeNum nodeNum) const noexcept
 {
     int cnt = 0;
     for (std::shared_ptr<Line> p : m_lines)
         if (cnt++ == nodeNum) return p->begin;
 }
 
-#endif // RECTANGLE_H
+#endif // Square_H

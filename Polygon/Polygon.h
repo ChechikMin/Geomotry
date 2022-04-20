@@ -19,7 +19,7 @@ class Polygon
       enum
       {
           Triangle,
-          Rectangle,
+          Square,
           Circle
       };
 

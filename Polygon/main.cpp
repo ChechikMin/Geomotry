@@ -85,7 +85,7 @@ int main( int argc, char * argv[] )
     try {
 
         std::unique_ptr<Polygon*> poly2 = std::make_unique<Polygon*>(new Triangle( points ));
-        std::unique_ptr<Polygon*> poly3 = std::make_unique<Polygon*>(new Rectangle( points1 ));
+        std::unique_ptr<Polygon*> poly3 = std::make_unique<Polygon*>(new Square( points1 ));
         std::unique_ptr<Polygon*> poly1 = std::make_unique<Polygon*>(new Circle( p, r ));
 
         Work * work = new Work;
