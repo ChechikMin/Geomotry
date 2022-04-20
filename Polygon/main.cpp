@@ -37,12 +37,12 @@ int main( int argc, char * argv[] )
     // 
     // 
     //////////////////////////
-    Polygon::Point p{ 1, 1 };
-    Polygon::Line r{p, {2,2}};
+    Polygon::Point p{ 0, 0 };
+    Polygon::Line r{p, {0,0}};
     //////////////////////////Circle
-    Polygon::Point p1{ 1, 1 };
-    Polygon::Point p2{ 1, 2 };
-    Polygon::Point p3{ 2, 2 };
+    Polygon::Point p1{ -0, -0 };
+    Polygon::Point p2{ 0, 0 };
+    Polygon::Point p3{ -0, -0 };
     std::shared_ptr<Polygon::Line> l1 = std::make_shared<Polygon::Line>();
     l1->begin = p1;
     l1->end = p2;
@@ -59,9 +59,9 @@ int main( int argc, char * argv[] )
     ///////////////////////Triangle
 
     Polygon::Point p4{ 1, 1 };
-    Polygon::Point p5{ 1, 2 };
-    Polygon::Point p6{ 2, 2 };
-    Polygon::Point p7{ 2, 1 };
+    Polygon::Point p5{ 1, 5.5};
+    Polygon::Point p6{ 8.02, 5.5 };
+    Polygon::Point p7{ 8.02, 1 };
 
     std::shared_ptr<Polygon::Line> r1 = std::make_shared<Polygon::Line>();
     ;
@@ -108,3 +108,30 @@ int main( int argc, char * argv[] )
 
     return 0;
 }
+
+
+/*
+Output
+
+Circle
+r = 1.414214
+(xA,yA): (1.000000,1.000000)
+Area:6.28319
+Area deSerialized:6.28319
+|||||||||||||||||||||||||||||||
+Triangle
+(xA,yA): (1.000000,1.000000)
+(xB,yB): (1.000000,2.000000)
+(xC,yC): (2.000000,2.000000)
+Area:0.5
+Area deSerialized:0.5
+|||||||||||||||||||||||||||||||
+Rectangle
+(xA,yA): (1.000000,1.000000)
+(xB,yB): (1.000000,2.000000)
+(xC,yC): (2.000000,2.000000)
+(xD,yD): (2.000000,1.000000)
+Area:1
+Area deSerialized:1
+|||||||||||||||||||||||||||||||
+*/
