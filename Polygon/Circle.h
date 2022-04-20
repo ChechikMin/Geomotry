@@ -5,6 +5,7 @@
 class Circle : public Polygon
 {
   public:
+
     explicit Circle(const Point & point, const Line & radius )
       : m_centr( std::make_shared<Point>(point) )
       , m_radius( radius )
@@ -18,26 +19,27 @@ class Circle : public Polygon
     virtual Point getCoordinate( nodeNum ) const noexcept override;
 
   private:
+
     mutable Line m_radius;
     mutable std::shared_ptr<Point> m_centr;
     mutable Area m_s = 0;
 };
-
+///////////////////////////////////
 Area Circle ::area() const noexcept
 {
     return m_s;
 };
-
+///////////////////////////////////
 type Circle ::getType() const noexcept
 {
     return Polygon::Circle;
 }
-
+///////////////////////////////////
 Polygon::Point Circle ::getCoordinate( nodeNum nodeNum ) const noexcept
 {
     return nodeNum ? Point{ m_radius.getLineLen(),} : Point{ m_centr->x, m_centr->y };
 }
-
+///////////////////////////////////
 
 
 #endif // CIRCLE_H

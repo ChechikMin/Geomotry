@@ -6,6 +6,7 @@
 class Triangle : public Polygon
 {
   public:
+
     explicit Triangle( const std ::list<std::shared_ptr<Line>> & lines )
       : m_lines( lines )
     {
@@ -43,23 +44,23 @@ class Triangle : public Polygon
     std ::list<std::shared_ptr<Line>> m_lines{ 4 };
     mutable Area m_s = 1;
 };
-
+///////////////////////////////////
 Area Triangle ::area() const noexcept
 {
     return m_s;
 }
-
+///////////////////////////////////
 type Triangle ::getType() const noexcept
 {
     return Polygon::Triangle;
 }
-
+///////////////////////////////////
 Polygon::Point Triangle ::getCoordinate( nodeNum nodeNum ) const noexcept
 {
     int cnt = 0;
     for ( std::shared_ptr<Line> l : m_lines )
         if ( cnt++ == nodeNum ) return l->begin;
 }
-
+///////////////////////////////////
 
 #endif // TRIANGLE_H
